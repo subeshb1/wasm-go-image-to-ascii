@@ -102,3 +102,4 @@ modules.xml
 wasm-go-image-to-ascii
 
 # End of https://www.gitignore.io/api/go,intellij+all
+*.wasm
