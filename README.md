@@ -47,9 +47,9 @@ var ansi_up = new AnsiUp(); // https://github.com/drudru/ansi_up
 var html = ansi_up.ansi_to_html(txt);
 ```
 
-Reading image in javascript: [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader)
-Image to Ascii configuration: [image2ascii](https://github.com/qeesung/image2ascii)
-Ansi to html: [AnsiUp](https://github.com/drudru/ansi_up)
+- Reading image in javascript: [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader)
+- Image to Ascii configuration: [image2ascii](https://github.com/qeesung/image2ascii)
+- Ansi to html: [AnsiUp](https://github.com/drudru/ansi_up)
 
 ## Example Use case
 
