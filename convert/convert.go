@@ -3,15 +3,16 @@ package convert
 
 import (
 	"bytes"
-	"github.com/subeshb1/wasm-go-image-to-ascii/ascii"
 	"image"
 	"image/color"
+
+	"github.com/subeshb1/wasm-go-image-to-ascii/ascii"
+
 	// Support decode jpeg image
 	_ "image/jpeg"
 	// Support deocde the png image
 	_ "image/png"
 	"log"
-	"os"
 )
 
 // Options to convert the image to ASCII
@@ -30,7 +31,7 @@ var DefaultOptions = Options{
 	Ratio:           1,
 	FixedWidth:      -1,
 	FixedHeight:     -1,
-	FitScreen:       true,
+	FitScreen:       false,
 	Colored:         true,
 	Reversed:        false,
 	StretchedScreen: false,
@@ -48,8 +49,8 @@ func NewImageConverter() *ImageConverter {
 type Converter interface {
 	Image2ASCIIMatrix(image image.Image, imageConvertOptions *Options) []string
 	Image2ASCIIString(image image.Image, options *Options) string
-	ImageFile2ASCIIMatrix(imageFilename string, option *Options) []string
-	ImageFile2ASCIIString(imageFilename string, option *Options) string
+	ImageFile2ASCIIMatrix(imgByte []byte, option *Options) []string
+	ImageFile2ASCIIString(imgByte []byte, option *Options) string
 	Image2PixelASCIIMatrix(image image.Image, imageConvertOptions *Options) [][]ascii.CharPixel
 	ImageFile2PixelASCIIMatrix(image image.Image, imageConvertOptions *Options) [][]ascii.CharPixel
 }
@@ -85,8 +86,8 @@ func (converter *ImageConverter) Image2CharPixelMatrix(image image.Image, imageC
 }
 
 // ImageFile2CharPixelMatrix convert a image to a pixel ascii matrix
-func (converter *ImageConverter) ImageFile2CharPixelMatrix(imageFilename string, imageConvertOptions *Options) [][]ascii.CharPixel {
-	img, err := OpenImageFile(imageFilename)
+func (converter *ImageConverter) ImageFile2CharPixelMatrix(imgByte []byte, imageConvertOptions *Options) [][]ascii.CharPixel {
+	img, err := OpenImageFile(imgByte)
 	if err != nil {
 		log.Fatal("open image failed : " + err.Error())
 	}
@@ -128,8 +129,8 @@ func (converter *ImageConverter) Image2ASCIIString(image image.Image, options *O
 }
 
 // ImageFile2ASCIIMatrix converts a image file to ascii matrix
-func (converter *ImageConverter) ImageFile2ASCIIMatrix(imageFilename string, option *Options) []string {
-	img, err := OpenImageFile(imageFilename)
+func (converter *ImageConverter) ImageFile2ASCIIMatrix(imgByte []byte, option *Options) []string {
+	img, err := OpenImageFile(imgByte)
 	if err != nil {
 		log.Fatal("open image failed : " + err.Error())
 	}
@@ -137,8 +138,8 @@ func (converter *ImageConverter) ImageFile2ASCIIMatrix(imageFilename string, opt
 }
 
 // ImageFile2ASCIIString converts a image file to ascii string
-func (converter *ImageConverter) ImageFile2ASCIIString(imageFilename string, option *Options) string {
-	img, err := OpenImageFile(imageFilename)
+func (converter *ImageConverter) ImageFile2ASCIIString(imgByte []byte, option *Options) string {
+	img, err := OpenImageFile(imgByte)
 	if err != nil {
 		log.Fatal("open image failed : " + err.Error())
 	}
@@ -146,17 +147,11 @@ func (converter *ImageConverter) ImageFile2ASCIIString(imageFilename string, opt
 }
 
 // OpenImageFile open a image and return a image object
-func OpenImageFile(imageFilename string) (image.Image, error) {
-	f, err := os.Open(imageFilename)
+func OpenImageFile(imgByte []byte) (image.Image, error) {
+	img, _, err := image.Decode(bytes.NewReader(imgByte))
 	if err != nil {
 		return nil, err
 	}
 
-	img, _, err := image.Decode(f)
-	if err != nil {
-		return nil, err
-	}
-
-	defer f.Close()
 	return img, nil
 }

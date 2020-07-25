@@ -5,7 +5,32 @@
     <script src="https://cdn.jsdelivr.net/gh/drudru/ansi_up/ansi_up.js"></script>
 
     <script src="wasm_exec.js"></script>
+  </head>
+  <body>
+    <pre id="console" style="background: black;"></pre>
+    <input type="file" name="file" id="file" />
     <script>
+      document.querySelector("#file").addEventListener(
+        "change",
+        function () {
+          var reader = new FileReader();
+          reader.onload = function () {
+            var arrayBuffer = this.result,
+              array = new Uint8Array(arrayBuffer);
+
+            var txt = convert(array);
+            var ansi_up = new AnsiUp();
+
+            var html = ansi_up.ansi_to_html(txt);
+
+            var cdiv = document.getElementById("console");
+
+            cdiv.innerHTML = html;
+          };
+          reader.readAsArrayBuffer(this.files[0]);
+        },
+        false
+      );
       const go = new Go();
       WebAssembly.instantiateStreaming(
         fetch("main.wasm"),
@@ -14,8 +39,5 @@
         go.run(result.instance);
       });
     </script>
-  </head>
-  <body>
-    <pre id="console"></pre>
   </body>
 </html>
