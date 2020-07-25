@@ -14,7 +14,7 @@ func converter(this js.Value, inputs []js.Value) interface{} {
 	inBuf := make([]uint8, array.Get("byteLength").Int())
 	js.CopyBytesToGo(inBuf, array)
 	convertOptions := convert.Options{}
-	err := json.Unmarshal([]byte(inputs[1]), &convertOptions)
+	err := json.Unmarshal([]byte(inputs[1].String()), &convertOptions)
 	if err != nil {
 		convertOptions = convert.DefaultOptions
 	}

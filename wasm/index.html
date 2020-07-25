@@ -7,9 +7,13 @@
     <script src="wasm_exec.js"></script>
   </head>
   <body>
-    <pre id="console" style="background: black;"></pre>
+    <pre
+      id="console"
+      style="background: black; color: white; overflow: scroll;"
+    ></pre>
     <input type="file" name="file" id="file" />
     <script>
+      let buffer;
       document.querySelector("#file").addEventListener(
         "change",
         function () {
@@ -17,8 +21,14 @@
           reader.onload = function () {
             var arrayBuffer = this.result,
               array = new Uint8Array(arrayBuffer);
-
-            var txt = convert(array);
+            buffer = array;
+            var txt = convert(
+              array,
+              JSON.stringify({
+                fixedWidth: 100,
+                fixedHeight: 40,
+              })
+            );
             var ansi_up = new AnsiUp();
 
             var html = ansi_up.ansi_to_html(txt);
@@ -31,6 +41,16 @@
         },
         false
       );
+      async function change(val) {
+        var txt = convert(buffer, JSON.stringify(val));
+        var ansi_up = new AnsiUp();
+
+        var html = ansi_up.ansi_to_html(txt);
+
+        var cdiv = document.getElementById("console");
+
+        cdiv.innerHTML = html;
+      }
       const go = new Go();
       WebAssembly.instantiateStreaming(
         fetch("main.wasm"),
