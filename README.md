@@ -3,27 +3,27 @@
 [![Build Status](https://travis-ci.org/qeesung/image2ascii.svg?branch=master)](https://travis-ci.org/qeesung/image2ascii)
 [![Coverage Status](https://coveralls.io/repos/github/qeesung/image2ascii/badge.svg?branch=master)](https://coveralls.io/github/qeesung/image2ascii?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/71a3059b49274dde9d81d58cedd80962)](https://app.codacy.com/app/qeesung/image2ascii?utm_source=github.com&utm_medium=referral&utm_content=qeesung/image2ascii&utm_campaign=Badge_Grade_Dashboard)
-[![Go Report Card](https://goreportcard.com/badge/github.com/qeesung/image2ascii)](https://goreportcard.com/report/github.com/qeesung/image2ascii)
-[![GoDoc](https://godoc.org/github.com/qeesung/image2ascii?status.svg)](https://godoc.org/github.com/qeesung/image2ascii)
+[![Go Report Card](https://goreportcard.com/badge/github.com/subeshb1/wasm-go-image-to-ascii)](https://goreportcard.com/report/github.com/subeshb1/wasm-go-image-to-ascii)
+[![GoDoc](https://godoc.org/github.com/subeshb1/wasm-go-image-to-ascii?status.svg)](https://godoc.org/github.com/subeshb1/wasm-go-image-to-ascii)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 Image2ASCII is a library that converts images into ASCII images and provides command-line tools for easy use.
 
-![demo](https://github.com/qeesung/image2ascii/blob/master/docs/images/lufei.gif?raw=true)
+![demo](https://github.com/subeshb1/wasm-go-image-to-ascii/blob/master/docs/images/lufei.gif?raw=true)
 
 ## Installation
 
 ```bash
-go get github.com/qeesung/image2ascii
+go get github.com/subeshb1/wasm-go-image-to-ascii
 ```
 
 ## CLI usage
 
 ```bash
 image2ascii version: image2ascii/1.0.0
->> HomePage: https://github.com/qeesung/image2ascii
->> Issue   : https://github.com/qeesung/image2ascii/issues
+>> HomePage: https://github.com/subeshb1/wasm-go-image-to-ascii
+>> Issue   : https://github.com/subeshb1/wasm-go-image-to-ascii/issues
 >> Author  : qeesung
 Usage: image2ascii [-s] -f <filename> -r <ratio> -w <width> -g <height>
 
@@ -46,7 +46,7 @@ convert the image fit the screen(default is true)
 ```bash
 image2ascii -f docs/images/pikaqiu2.jpg
 ```
-![demo](https://github.com/qeesung/image2ascii/blob/master/docs/images/pikaqiu_s.gif?raw=true)
+![demo](https://github.com/subeshb1/wasm-go-image-to-ascii/blob/master/docs/images/pikaqiu_s.gif?raw=true)
 
 convert the image to ascii image with fixed width and height
 ```bash
@@ -54,7 +54,7 @@ convert the image to ascii image with fixed width and height
 # height: 30
 image2ascii -f docs/images/baozou.jpg -w 100 -g 30
 ```
-![demo](https://github.com/qeesung/image2ascii/blob/master/docs/images/baozou.gif?raw=true)
+![demo](https://github.com/subeshb1/wasm-go-image-to-ascii/blob/master/docs/images/baozou.gif?raw=true)
 
 convert the image to ascii image by ratio
 ```bash
@@ -63,13 +63,13 @@ convert the image to ascii image by ratio
 # height: imageHeight * 0.3
 image2ascii -f docs/images/pikaqiu.jpg -r 0.3
 ```
-![demo](https://github.com/qeesung/image2ascii/blob/master/docs/images/pikaqiu.gif?raw=true)
+![demo](https://github.com/subeshb1/wasm-go-image-to-ascii/blob/master/docs/images/pikaqiu.gif?raw=true)
 
 convert the image to stretch the screen
 ```bash
 image2ascii -f docs/images/long.jpg -t
 ```
-![demo](https://github.com/qeesung/image2ascii/blob/master/docs/images/long.gif?raw=true)
+![demo](https://github.com/subeshb1/wasm-go-image-to-ascii/blob/master/docs/images/long.gif?raw=true)
 
 convert the image without the color
 ```bash
@@ -93,7 +93,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/qeesung/image2ascii/convert"
+	"github.com/subeshb1/wasm-go-image-to-ascii/convert"
 	_ "image/jpeg"
 	_ "image/png"
 )
@@ -151,4 +151,4 @@ type Converter interface {
 
 ## License
 
-This project is under the MIT License. See the [LICENSE](https://github.com/qeesung/image2ascii/blob/master/LICENSE) file for the full license text.
+This project is under the MIT License. See the [LICENSE](https://github.com/subeshb1/wasm-go-image-to-ascii/blob/master/LICENSE) file for the full license text.

@@ -2,8 +2,8 @@ package convert
 
 import (
 	"fmt"
-	terminal2 "github.com/qeesung/image2ascii/terminal"
-	"github.com/qeesung/image2ascii/terminal/mocks"
+	terminal2 "github.com/subeshb1/wasm-go-image-to-ascii/terminal"
+	"github.com/subeshb1/wasm-go-image-to-ascii/terminal/mocks"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"

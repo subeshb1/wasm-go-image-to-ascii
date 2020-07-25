@@ -1,10 +1,11 @@
 package convert
 
 import (
-	"github.com/nfnt/resize"
-	"github.com/qeesung/image2ascii/terminal"
 	"image"
 	"log"
+
+	"github.com/nfnt/resize"
+	"github.com/subeshb1/wasm-go-image-to-ascii/terminal"
 )
 
 // NewResizeHandler create a new resize handler

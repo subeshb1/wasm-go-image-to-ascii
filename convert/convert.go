@@ -3,7 +3,7 @@ package convert
 
 import (
 	"bytes"
-	"github.com/qeesung/image2ascii/ascii"
+	"github.com/subeshb1/wasm-go-image-to-ascii/ascii"
 	"image"
 	"image/color"
 	// Support decode jpeg image

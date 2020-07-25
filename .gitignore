@@ -99,7 +99,6 @@ modules.xml
 .idea/misc.xml
 *.ipr
 
-image2ascii
-
+wasm-go-image-to-ascii
 
 # End of https://www.gitignore.io/api/go,intellij+all
