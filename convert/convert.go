@@ -17,13 +17,13 @@ import (
 
 // Options to convert the image to ASCII
 type Options struct {
-	Ratio           float64
-	FixedWidth      int
-	FixedHeight     int
-	FitScreen       bool // only work on terminal
-	StretchedScreen bool // only work on terminal
-	Colored         bool // only work on terminal
-	Reversed        bool
+	Ratio           float64 `json:"ratio"`
+	FixedWidth      int     `json:"fixedWidth"`
+	FixedHeight     int     `json:"fixedHeight"`
+	FitScreen       bool    `json:"fitScreen"`       // only work on terminal
+	StretchedScreen bool    `json:"stretchedScreen"` // only work on terminal
+	Colored         bool    `json:"colored"`         // only work on terminal
+	Reversed        bool    `json:"reversed"`
 }
 
 // DefaultOptions for convert image
